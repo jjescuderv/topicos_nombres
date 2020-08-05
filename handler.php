@@ -2,9 +2,13 @@
     require 'connection.php';
 
     $nombre = $_POST["nombre"];
+    $notif = "";
+
     if(!empty($nombre)) {
         $sql = "INSERT INTO nombres (nombre) VALUES ('$nombre')";
-        $conn->exec($sql);
+
+        if($conn->exec($sql)) $notif = "Añadido: '$nombre'";
+        else $notif = "Hubo un error";
     }
     
 ?>
@@ -19,7 +23,7 @@
         <form action="handler.php" method="POST">
             Nombre: <input name="nombre" type="text">
             <input type="submit">
-            <p>Añadido: '<?= $nombre; ?>' </p>
+            <p><?= $notif; ?> </p>
         </form>
     </body>
 </html>
