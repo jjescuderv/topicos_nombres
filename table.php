@@ -12,11 +12,13 @@
 </head>
 
 <body>
-    <table>
+    <a href="/projects/topicos_nombres"> Volver </a>
+    <table style="margin: 10px 0 0 0">
         <tr>
             <th>Nombres guardados</th>
         </tr>
-        <?php 
+
+        <?php #Código PHP para llenar la tabla                                                              
             require 'connection.php';
             $sql = "SELECT * FROM nombres";
             foreach ($conn->query($sql) as $row) {
@@ -25,6 +27,7 @@
                 <td> <?php print $row['nombre']; ?> </td>
             </tr>
         <?php } ?>
+        
     </table>
 </body>
 
